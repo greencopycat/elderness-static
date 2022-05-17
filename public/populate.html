@@ -3,9 +3,20 @@
   <head>
     <title>Wise Man Populates.</title>
   </head>
+  <!-- TODO: Need to add UI from react version -->
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+
+      <form action="http://localhost:4000/msapi/add" target="_blank" method="POST">
+        <fieldset>
+          <legend>Populate from file:</legend>
+            <input type="file" accept="scv/text" />
+            <button type="submit">Submit</button>
+            <button type="reset">Cancel</button>
+        </fieldset>
+      </form>
+    </div>
     <script>
       (function() {
         window.onload = function() {
