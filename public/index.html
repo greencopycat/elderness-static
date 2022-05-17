@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Wise Man Once Said...</title>
+    <!-- Use JSP to serve for the next phase for this content -->
+    <style>
+      #wiseword {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .85);
+        color: rgba(225, 225, 225, .85);
+        position: absolute;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 0px 0px 10px #BADA55;
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wiseword"></div>
+    <script>
+        (function() {
+            window.onload = () => {
+                const ENDPOINT = "http://localhost:4000/msapi/get";
+                const $tar = document.querySelector('#wiseword');
+                fetch(ENDPOINT).then((data) => {
+                  return data.json()
+                })
+                .then((data) => {
+                  $tar.innerText = data.data
+                }).catch(err=> {
+                  console.error('[api] -> err -> ', err);
+                  $tar.innerText = "Wise man is out of the office at this moment. Please try again later.";
+                });
+            }
+        }())
+    </script>
+  </body>
+</html>
